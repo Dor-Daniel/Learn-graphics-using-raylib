@@ -2,6 +2,7 @@
 
 A personal exploration of computer graphics, 3D math, and simulation principles built from scratch in C++ using raylib.
 
+
 ##  Project Overview
 
 This project was created as a learning environment to deepen my understanding of 3D graphics programming, simulation systems, and the mathematical principles behind them.
@@ -18,6 +19,7 @@ It began as a small experiment to build a minimal graphics sandbox where I could
 * Basic game loop design
 
 and later explore geometry, animation, and simulation through small experiments.
+
 
 ## Structure & Components
 
@@ -67,6 +69,7 @@ Orthographic 3D camera for stable scale-independent visuals.
 Configurable wireframe vs. shaded render modes.
 
 Integration with custom GLSL lighting shader (lighting_vertex.glsl, lighting_fragment.glsl).
+
 
 ## Technical Highlights
 Category	Description
