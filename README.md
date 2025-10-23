@@ -1,6 +1,6 @@
 # Learn Graphics Using Raylib
 
-A personal exploration of computer graphics, 3D math, and simulation principles — built from scratch in C++ using raylib.
+A personal exploration of computer graphics, 3D math, and simulation principles built from scratch in C++ using raylib.
 
 ##  Project Overview
 
