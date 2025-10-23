@@ -150,4 +150,4 @@ S – shaded mode
 
 ## Gallery 
 
-![Tower stocking demo](docs/videos/tower-mini-game.mp4)
+![Tower stocking demo](docs/videos/tower-mini-game.gif)
