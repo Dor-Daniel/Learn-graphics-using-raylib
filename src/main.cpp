@@ -23,7 +23,7 @@
 
 // Globals
 // -------------------------------------------
-#define WIDTH 1000
+#define WIDTH 2000
 #define HEIGHT 1500
 #define BACKGROUND_COLOR Color{ .r = 20, .g = 20, .b = 20, .a = 255}
 
@@ -37,7 +37,7 @@ static void Init()
     );
     InitWindow(WIDTH, HEIGHT, "raylib");
     SetTargetFPS(60);
-    CameraSystem3D::initCamera();
+    CameraSystem::initCamera();
     
     SetTargetFPS(60);
 }
@@ -49,84 +49,18 @@ static void Shutdown()
 }
 
 static void Update(){
-    CameraSystem3D::updateCamera();        
+    CameraSystem::updateCamera();        
     Time::update();
 }
 
-enum class Interpolation{ LINEAR, CUBIC };
 
-struct Object{
-    Vec3 *vertices;
-    size_t* triangles;
-};
-
-const Object Cube = Object{
-    .vertices = (Vec3*)malloc(8 * sizeof(Vec3)),
-    .triangles = (size_t*)malloc(36 * sizeof(size_t))
-};
 
 
 int main(void)
 {
     Init();
-
-    Cube.vertices[0] = Vec3{ 1,  1,  1};
-    Cube.vertices[1] = Vec3{ 1,  1, -1};
-    Cube.vertices[2] = Vec3{ 1, -1,  1};
-    Cube.vertices[4] = Vec3{ 1, -1, -1};
-    Cube.vertices[5] = Vec3{-1,  1,  1};
-    Cube.vertices[6] = Vec3{-1,  1, -1};
-    Cube.vertices[3] = Vec3{-1, -1,  1};
-    Cube.vertices[7] = Vec3{-1, -1, -1};
-
-
-    Cube.triangles[0]  = 0;
-    Cube.triangles[1]  = 0;
-    Cube.triangles[2]  = 0;
-    Cube.triangles[3]  = 0;
-    Cube.triangles[4]  = 0;
-    Cube.triangles[5]  = 0;
- 
-    Cube.triangles[6]  = 0;
-    Cube.triangles[7]  = 0;
-    Cube.triangles[8]  = 0;
-    Cube.triangles[9]  = 0;
-    Cube.triangles[10] = 0;
-    Cube.triangles[11] = 0;
-
-    Cube.triangles[12] = 0;
-    Cube.triangles[13] = 0;
-    Cube.triangles[14] = 0;
-    Cube.triangles[15] = 0;
-    Cube.triangles[16] = 0;
-    Cube.triangles[17] = 0;
-
-    Cube.triangles[18] = 0;
-    Cube.triangles[19] = 0;
-    Cube.triangles[20] = 0;
-    Cube.triangles[21] = 0;
-    Cube.triangles[22] = 0;
-    Cube.triangles[23] = 0;
-
-    Cube.triangles[24] = 0;
-    Cube.triangles[25] = 0;
-    Cube.triangles[26] = 0;
-    Cube.triangles[27] = 0;
-    Cube.triangles[28] = 0;
-    Cube.triangles[29] = 0;
-
-    Cube.triangles[30] = 0;
-    Cube.triangles[31] = 0;
-    Cube.triangles[32] = 0;
-    Cube.triangles[33] = 0;
-    Cube.triangles[34] = 0;
-    Cube.triangles[35] = 0;
-
-
-
-
-    CameraSystem3D::camera.up = Vector3{0,0,1};
-    CameraSystem3D::cameraOffset = Vector3{0, 100, 0};
+    int initialCount = 1000;
+    FlockSimulation::prepare(initialCount);
 
     while (!WindowShouldClose())
     {
@@ -136,11 +70,9 @@ int main(void)
         BeginDrawing();
             ClearBackground(BACKGROUND_COLOR);
 
-            BeginMode3D(CameraSystem3D::camera);
-                DrawCube(Vector3{0, 0, 0}, 10, 10, 10, DARKPURPLE);
-                DrawCubeWires(Vector3{0, 0, 0}, 10, 10, 10, WHITE);
-                DrawLine3D(Vector3{0, 25, 0}, Vector3{0, 0, 0}, RED);
-            EndMode3D();
+            BeginMode2D(CameraSystem::camera);
+            FlockSimulation::frame();
+            EndMode2D();
 
         EndDrawing();
 

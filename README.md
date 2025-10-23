@@ -149,5 +149,9 @@ S – shaded mode
 - Modularize into a reusable “mini-engine”
 
 ## Gallery 
-
+#### tower stocking demo | shaders, game design
 ![Tower stocking demo](docs/videos/tower-mini-game.gif)
+
+---
+#### Flock simulation using quadtree | data structures, preformance
+![Flock simulation](docs/videos/flock-simulation.gif)
